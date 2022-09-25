@@ -132,7 +132,7 @@ function storeTodos(array) {
 }
 
 const startServer = http.createServer(requestHandler);
-startServer.listen(8000, function () {
+startServer.listen(3000, function () {
     console.log("Server Initiated Successfully!");
 });
 
