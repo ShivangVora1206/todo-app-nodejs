@@ -4,7 +4,7 @@ var tasks = getAllTodosFromServer();
 
 function getAllTodosFromServer(){
     let request = new XMLHttpRequest();
-    request.open("GET", "http://127.0.0.1:8000/readTodo");
+    request.open("GET", "https://todo-app-node-cq.herokuapp.com/readTodo");
     request.send();
     request.addEventListener("load", function (){
         todosFromServer = JSON.parse(request.responseText);
@@ -61,7 +61,7 @@ function addTasks(taskData, identifier){
 
     if(identifier === "button"){
         let request = new XMLHttpRequest();
-        request.open("POST", "http://127.0.0.1:8000/newTodo");
+        request.open("POST", "https://todo-app-node-cq.herokuapp.com/newTodo");
         let postData = {"task" : taskData};
         request.setRequestHeader("Content-Type", "application/json");
         request.send(JSON.stringify(postData));
@@ -72,7 +72,7 @@ function addTasks(taskData, identifier){
         newData.style.textDecoration = "line-through";
         //api call to update todo state
         let request = new XMLHttpRequest();
-        request.open("POST", "http://127.0.0.1:8000/updateTodoState");
+        request.open("POST", "https://todo-app-node-cq.herokuapp.com/updateTodoState");
         let postData = {"task" : taskData};
         request.setRequestHeader("Content-Type", "application/json");
         request.send(JSON.stringify(postData));        
@@ -82,7 +82,7 @@ function addTasks(taskData, identifier){
         taskTable.removeChild(newRow);
         //api call to delete todo event
         let request = new XMLHttpRequest();
-        request.open("POST", "http://127.0.0.1:8000/deleteTodo");
+        request.open("POST", "https://todo-app-node-cq.herokuapp.com/deleteTodo");
         let postData = {"task" : taskData};
         request.setRequestHeader("Content-Type", "application/json");
         request.send(JSON.stringify(postData));
@@ -93,7 +93,7 @@ function addTasks(taskData, identifier){
         newData.innerText = updateData;
         //api call to update todo value
         let request = new XMLHttpRequest();
-        request.open("POST", "http://127.0.0.1:8000/updateTodoValue");
+        request.open("POST", "https://todo-app-node-cq.herokuapp.com/updateTodoValue");
         let postData = {oldTask : taskData, newTask : updateData};
         request.setRequestHeader("Content-Type", "application/json");
         request.send(JSON.stringify(postData));
